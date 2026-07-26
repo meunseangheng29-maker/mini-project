@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniproject</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        .slider-img {
+            height: calc(100vh - 56px);
+            width: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .carousel-item {
+            position: relative;
+            overflow: hidden;
+            height: calc(100vh - 56px);
+        }
+
+        .carousel-item:hover .slider-img {
+            transform: scale(1.03);
+        }
+
+       
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+
+        .carousel-caption {
+            bottom: 30%; 
+            z-index: 2;
+        }
+
+        .carousel-caption h1 {
+            font-size: 3.5rem;
+            text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-caption p {
+            font-size: 22px;
+        }
+
+        .btn {
+            border-radius: 30px;
+            padding: 12px 35px;
+        }
+        .card-img-top {
+        height: 300px;         /* អ្នកអាចដូរលេខ 300px នេះទៅតាមទំហំដែលអ្នកចង់បាន */
+        object-fit: cover;     /* ជួយកាត់តម្រឹមរូបភាពឱ្យសមល្មម មិនឱ្យទាញខូចរាងភាពដើម */
+        width: 100%;           /* ឱ្យរូបភាពរីកពេញទទឹង Card */
+        }
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm py-3">
+    <div class="container">
+        
+        <a href="#" class="navbar-brand fw-bold text-uppercase tracking-wider">
+            <i class="bi bi-gem me-2 text-warning"></i>YSL LUXURY
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-medium">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">New Arrivals</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">Categories</a>
+                    <ul class="dropdown-menu border-0 shadow">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-magic me-2"></i>Cosmetics</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-droplet-half me-2"></i>Perfumes</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-bag-heart me-2"></i>Bags & Shoes</a></li>
+                    </ul>
+                </li>
+               <li class="nav-item">
+                <a href="About.html" class="nav-link">About Us</a>
+                </li>
+            </ul>
+
+            <form class="d-flex me-3 mt-2 mt-lg-0" role="search">
+                <div class="input-group">
+                    <input class="form-control bg-secondary text-white border-0 bg-opacity-25" type="search" placeholder="Search product..." aria-label="Search">
+                    <button class="btn btn-outline-light border-0" type="submit"><i class="bi bi-search"></i></button>
+                </div>
+            </form>
+
+            <div class="d-flex gap-2 mt-2 mt-lg-0">
+                <button class="btn btn-link text-white p-2 position-relative text-decoration-none" type="button" title="User Profile">
+                    <i class="bi bi-person fs-5"></i>
+                </button>
+                
+                <button class="btn btn-warning rounded-circle p-2 position-relative d-flex align-items-center justify-content-center" 
+                        style="width: 42px; height: 42px;"
+                        type="button" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#sidebar" 
+                        title="View Cart">
+                    <i class="bi bi-bag-check-fill fs-5"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">
+                        3
+                    </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+    <main class="container my-4">
+        <div class="mb-4">
+            <h1 class="fw-bold">Welcome To My Shop</h1>
+            <p class="text-muted">Resize the browser window to see how it cleanly collapses into a mobile-friendly hamburger menu.</p>
+        </div>
+
+        <div id="heroSlider" class="carousel slide carousel-fade shadow-lg rounded overflow-hidden" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://i.pinimg.com/736x/6e/aa/79/6eaa799fb24d65d52c69ed456ad03e1c.jpg" class="d-block w-100 slider-img" alt="New Collection">
+                    <div class="overlay"></div>
+                    <div class="carousel-caption text-start">
+                        <h1 class="display-4 fw-bold">New Collection</h1>
+                        <p class="lead">Discover the latest fashion with premium quality.</p>
+                        <a href="#" class="btn btn-primary btn-lg">Shop Now</a>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.8v82W8iGegqGxZF-lOb5FQHaJu?r=0&w=640&h=840&rs=1&pid=ImgDetMain&o=7&rm=3" class="d-block w-100 slider-img" alt="Summer Sale">
+                    <div class="overlay"></div>
+                    <div class="carousel-caption">
+                        <h1 class="display-4 fw-bold">Mid Year Sale</h1>
+                        <p class="lead">Up to 50% OFF on selected products.</p>
+                        <a href="#" class="btn btn-warning btn-lg">Buy Now</a>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="https://images.bloomingdalesassets.com/is/image/MacysInc/YSL_BRAND_PAGE_BANNER:5x3?$8grid_desktop$&resMode=sharp2&qlt=85,0&fmt=jpeg" class="d-block w-100 slider-img" alt="Free Shipping">
+                    <div class="overlay"></div>
+                    <div class="carousel-caption text-end">
+                        <h1 class="display-4 fw-bold">Free Shipping</h1>
+                        <p class="lead">Fast delivery to your doorstep.</p>
+                        <a href="#" class="btn btn-success btn-lg">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </main>
+
+    <section class="container py-4">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img class="card-img-top" src="https://tse1.mm.bing.net/th/id/OIP.IVImiMSCW_oxQQeOnOjq8wHaJD?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Lipstick">
+                    <div class="card-body d-flex flex-column p-3">
+                        <h5 class="card-title">Lipstick YSL Brand</h5>
+                        <p class="card-text text-danger fw-bold">50$</p>
+                       <!-- ឧទាហរណ៍៖ ប៊ូតុង Order នៅក្នុង Card ផលិតផលនីមួយៗ -->
+                       <a href="#" class="btn btn-outline-primary mt-auto" data-bs-toggle="offcanvas" data-bs-target="#sidebar">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img class="card-img-top" src="https://i.pinimg.com/736x/4c/12/c0/4c12c0402e3a950463e691a953fa42d9.jpg" alt="Cushion">
+                    <div class="card-body d-flex flex-column p-3">
+                        <h5 class="card-title">Cushion YSL</h5>
+                        <p class="card-text text-danger fw-bold">88$</p>
+                       <a href="#" class="btn btn-outline-primary mt-auto" data-bs-toggle="offcanvas" data-bs-target="#sidebar">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img class="card-img-top" src="https://tse2.mm.bing.net/th/id/OIP.6G9eJNQKBxxRrabQ6yQXwQAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Foundation">
+                    <div class="card-body d-flex flex-column p-3">
+                        <h5 class="card-title">Foundation</h5>
+                        <p class="card-text text-danger fw-bold">45$</p>
+                     <a href="#" class="btn btn-outline-primary mt-auto" data-bs-toggle="offcanvas" data-bs-target="#sidebar">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img class="card-img-top" src="https://www.yslbeauty.co.id/dw/image/v2/BFZM_PRD/on/demandware.static/-/Sites-ysl-id-ng-Library/in_ID/dw451d4772/landing-pages/2025_LP/MYSLF-le-parfum-clp/sec-09-hero-mob.jpg?sw=640&sh=800&sm=cut&q=85" alt="Perfume Men">
+                    <div class="card-body d-flex flex-column p-3">
+                        <h5 class="card-title">Perfume For Men</h5>
+                        <p class="card-text text-danger fw-bold">85$</p>
+                       <a href="#" class="btn btn-outline-primary mt-auto" data-bs-toggle="offcanvas" data-bs-target="#sidebar">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img class="card-img-top" src="https://tse3.mm.bing.net/th/id/OIP.h2oS0dNWCKrLAG_Vt8Vp5AHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Black Bag">
+                    <div class="card-body d-flex flex-column p-3">
+                        <h5 class="card-title">Black Bags</h5>
+                        <p class="card-text text-danger fw-bold">1000$</p>
+                       <a href="#" class="btn btn-outline-primary mt-auto" data-bs-toggle="offcanvas" data-bs-target="#sidebar">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img class="card-img-top" src="https://cdna.lystit.com/photos/bergdorfgoodman/86bab3a7/saint-laurent-NERO-Cassandra-Mini-Ysl-Raffia-Top-handle-Bag.jpeg" alt="Top Bag">
+                    <div class="card-body d-flex flex-column p-3">
+                        <h5 class="card-title">Top-handle Bags</h5>
+                        <p class="card-text text-danger fw-bold">1200$</p>
+                      <a href="#" class="btn btn-outline-primary mt-auto" data-bs-toggle="offcanvas" data-bs-target="#sidebar">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img class="card-img-top" src="https://i.ebayimg.com/images/g/hQoAAOSwddRjfsiL/s-l1600.jpg" alt="Shoes">
+                    <div class="card-body d-flex flex-column p-3">
+                        <h5 class="card-title">Shoes</h5>
+                        <p class="card-text text-danger fw-bold">2500$</p>
+                     <a href="#" class="btn btn-outline-primary mt-auto" data-bs-toggle="offcanvas" data-bs-target="#sidebar">Order</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <img class="card-img-top" src="https://tse1.mm.bing.net/th/id/OIP.iEycFAuVcmVeuMlblhM6awHaJQ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Perfume Women">
+                    <div class="card-body d-flex flex-column p-3">
+                        <h5 class="card-title">Perfume For Women</h5>
+                        <p class="card-text text-danger fw-bold">125$</p>
+                        <a href="#" class="btn btn-outline-primary mt-auto" data-bs-toggle="offcanvas" data-bs-target="#sidebar">Order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Shopping Sidebar Cart -->
+<div class="offcanvas offcanvas-end border-0 shadow-lg" id="sidebar" style="background-color: #fff; width: 400px;">
+    
+    <!-- Header របស់ Cart -->
+    <div class="offcanvas-header border-bottom py-4" style="background-color: #0a0a0a; color: #fff;">
+        <h5 class="offcanvas-title text-uppercase fw-bold tracking-wider" style="font-size: 1.1rem; letter-spacing: 1.5px;">
+            <i class="bi bi-bag me-2 text-warning"></i> Shopping Cart (3)
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <!-- Body របស់ Cart -->
+    <div class="offcanvas-body d-flex flex-column justify-content-between p-4">
+        
+        <!-- ផ្នែកបញ្ជីទំនិញ (Cart Items List) -->
+        <div class="cart-items-list" style="overflow-y: auto; max-height: 60vh;">
+            
+            <!-- Item 1: ក្រែមលាបមាត់ -->
+            <div class="d-flex align-items-center mb-4 pb-3 border-bottom">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.IVImiMSCW_oxQQeOnOjq8wHaJD?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" 
+                     alt="Lipstick" class="img-thumbnail border-0 bg-light p-2" style="width: 70px; height: 70px; object-fit: cover;">
+                <div class="ms-3 flex-grow-1">
+                    <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">Lipstick YSL Brand</h6>
+                    <small class="text-muted d-block mb-1">Qty: 1</small>
+                    <span class="fw-bold text-danger" style="font-size: 0.95rem;">$50</span>
+                </div>
+                <button class="btn btn-link text-muted p-0" title="Remove item"><i class="bi bi-trash3"></i></button>
+            </div>
+
+            <!-- Item 2: ម្សៅទ្រនាប់ -->
+            <div class="d-flex align-items-center mb-4 pb-3 border-bottom">
+                <img src="https://i.pinimg.com/736x/4c/12/c0/4c12c0402e3a950463e691a953fa42d9.jpg" 
+                     alt="Cushion" class="img-thumbnail border-0 bg-light p-2" style="width: 70px; height: 70px; object-fit: cover;">
+                <div class="ms-3 flex-grow-1">
+                    <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">Cushion YSL Perfect</h6>
+                    <small class="text-muted d-block mb-1">Qty: 1</small>
+                    <span class="fw-bold text-danger" style="font-size: 0.95rem;">$88</span>
+                </div>
+                <button class="btn btn-link text-muted p-0" title="Remove item"><i class="bi bi-trash3"></i></button>
+            </div>
+
+            <!-- Item 3: ទឹកអប់បុរស -->
+            <div class="d-flex align-items-center mb-4 pb-3 border-bottom">
+                <img src="https://www.yslbeauty.co.id/dw/image/v2/BFZM_PRD/on/demandware.static/-/Sites-ysl-id-ng-Library/in_ID/dw451d4772/landing-pages/2025_LP/MYSLF-le-parfum-clp/sec-09-hero-mob.jpg?sw=640&sh=800&sm=cut&q=85" 
+                     alt="Perfume" class="img-thumbnail border-0 bg-light p-2" style="width: 70px; height: 70px; object-fit: cover;">
+                <div class="ms-3 flex-grow-1">
+                    <h6 class="mb-0 fw-bold text-dark" style="font-size: 0.9rem;">MYSLF Perfume For Men</h6>
+                    <small class="text-muted d-block mb-1">Qty: 1</small>
+                    <span class="fw-bold text-danger" style="font-size: 0.95rem;">$85</span>
+                </div>
+                <button class="btn btn-link text-muted p-0" title="Remove item"><i class="bi bi-trash3"></i></button>
+            </div>
+
+        </div>
+
+        <!-- ផ្នែកខាងក្រោមបង្អស់៖ សរុបលុយ និងប៊ូតុងចុចលុយ (Footer Section) -->
+        <div class="cart-footer pt-3 bg-white">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted text-uppercase tracking-wider small fw-bold">Total Amount:</span>
+                <span class="fs-4 fw-bold text-dark">$223</span>
+            </div>
+            
+            <div class="d-grid gap-2">
+                <a href="#" class="btn btn-dark rounded-0 py-2 text-uppercase tracking-wider fw-medium" style="font-size: 0.85rem; background-color: #0a0a0a;">
+                    Proceed To Checkout
+                </a>
+                <button type="button" class="btn btn-outline-secondary rounded-0 py-2 text-uppercase tracking-wider" data-bs-dismiss="offcanvas" style="font-size: 0.85rem;">
+                    Continue Shopping
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
